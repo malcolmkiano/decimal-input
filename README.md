@@ -1,6 +1,6 @@
 # Decimal Input
 
-A simple number input that forces decimal entry. I made this because I'm working on a web-app that requires decimal input, however, the default iOS numeric keypad does not include a period. The height feature was added just because I thought it might be useful.\
+A simple number input that forces decimal entry. I made this because I'm working on a web-app that requires decimal input, however, the default iOS numeric keypad does not include a period. The height feature was added just because I need it for my app, and thought it might be useful.\
 \
 ![decimal-input.js version](https://img.shields.io/badge/decimal--input.js-v1.0.0-brightgreen)
 
