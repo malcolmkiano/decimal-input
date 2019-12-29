@@ -18,7 +18,7 @@ Include the **decimal-input.js** file at the bottom of your body and initialize 
 
     <script type="text/javascript" src="link/to/decimal-input.js"></script>
     <script type="text/javascript">
-		decimalInput();
+      decimalInput();
     </script>
 
 </body>
