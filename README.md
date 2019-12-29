@@ -1,7 +1,7 @@
 # Decimal Input
 
 A simple JavaScript plugin that forces decimal entry on input elements. I made this because I'm working on a web-app that requires decimal input, however, the default iOS numeric keypad does not include a period. The height feature was added just because I need it for my app, and thought it might be useful.<br/>
-See a ![demo](https://kshncodes.github.io/decimal-input/demo)
+See a [demo](https://kshncodes.github.io/decimal-input/demo)
 <br/><br/>
 ![decimal-input.js version](https://img.shields.io/badge/decimal--input.js-v1.0.0-brightgreen)
 
