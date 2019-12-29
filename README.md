@@ -1,7 +1,6 @@
-# Decimal Input
-
-A simple number input that forces decimal entry. I made this because I'm working on a web-app that requires decimal input, however, the default iOS numeric keypad does not include a period. The height feature was added just because I thought it might be useful.\
-\
+A simple JavaScript plugin that forces decimal entry on input elements. I made this because I'm working on a web-app that requires decimal input, however, the default iOS numeric keypad does not include a period. The height feature was added just because I needed it for my app, and thought it might be useful.<br/>
+See a [demo](https://kshncodes.github.io/decimal-input/demo).
+<br/><br/>
 ![decimal-input.js version](https://img.shields.io/badge/decimal--input.js-v1.0.0-brightgreen)
 
 ## Installation
@@ -18,7 +17,7 @@ Include the **decimal-input.js** file at the bottom of your body and initialize 
 
     <script type="text/javascript" src="link/to/decimal-input.js"></script>
     <script type="text/javascript">
-		decimalInput();
+      decimalInput();
     </script>
 
 </body>
@@ -43,7 +42,7 @@ decimalInput({
 })
 ```
 
-- **`length`**: this sets the number of decimal places used in formatting your inputs. Default value is `2`. This value only affects inputs displaying in the standard format. Length is limited from 1-3 places (might change soon).
+- **`length`**: this sets the number of decimal places used in formatting your inputs. Default value is `2`. This value only affects inputs displaying in the standard format.
 ```javascript
 decimalInput({
     length: 2
@@ -51,16 +50,16 @@ decimalInput({
 ```
 
 - **`validation`**: this sets the type of validation to be used on height inputs. Can be `soft` or `hard`. Default value is `soft`.
--- Soft validation marks the input as invalid and you can hook onto this with css to show it as such.
--- Hard validation calculates the actual value in feet and inches and replaces the entry in the input.
+	- **Soft** validation marks the input as invalid and you can hook onto this with css to show it as such.
+	- **Hard** validation calculates the actual value in feet and inches and replaces the entry in the input.
 ```javascript
 decimalInput({
-    length: 2
+    validation: "soft"
 })
 ```
 
 ### Input-level options
-All the input level options are applied using the `data` attribute.
+All the input level options are applied using the `data` attribute. These override the global options **only** for the input they are applied on.
 - **`format`**: this, just like the global option, sets the formatting type for the specific input it's used on. Can be `standard` or `height`.
 ```html
 <input class="decimal" type="number" data-format="standard"/>
