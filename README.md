@@ -46,7 +46,7 @@ decimalInput({
 - **`length`**: this sets the number of decimal places used in formatting your inputs. Default value is `2`. This value only affects inputs displaying in the standard format. Length is limited from 1-3 places (might change soon).
 ```javascript
 decimalInput({
-    length: "2"
+    length: 2
 })
 ```
 
