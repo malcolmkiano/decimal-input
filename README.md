@@ -60,7 +60,7 @@ decimalInput({
 ```
 
 ### Input-level options
-All the input level options are applied using the `data` attribute.
+All the input level options are applied using the `data` attribute. These override the global options **only** for the input they are applied on.
 - **`format`**: this, just like the global option, sets the formatting type for the specific input it's used on. Can be `standard` or `height`.
 ```html
 <input class="decimal" type="number" data-format="standard"/>
