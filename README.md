@@ -15,12 +15,12 @@ Include the **decimal-input.js** file at the bottom of your body and initialize 
     <!-- rest of your code -->
     <input class="decimal" type="number"/>
     ...
-  
+
     <script type="text/javascript" src="link/to/decimal-input.js"></script>
     <script type="text/javascript">
 		decimalInput();
     </script>
-  
+
 </body>
 ```
 
@@ -36,10 +36,10 @@ decimalInput({
 })
 ```
 
-- **`display`**: this sets the formatting type for the inputs. Can be `standard` or `height`. Default value is `standard`.
+- **`format`**: this sets the formatting type for the inputs. Can be `standard` or `height`. Default value is `standard`.
 ```javascript
 decimalInput({
-    display: "standard"
+    format: "standard"
 })
 ```
 
@@ -50,17 +50,23 @@ decimalInput({
 })
 ```
 
+- **`validation`**: this sets the type of validation to be used on height inputs. Can be `soft` or `hard`. Default value is `soft`.
+-- Soft validation marks the input as invalid and you can hook onto this with css to show it as such.
+-- Hard validation calculates the actual value in feet and inches and replaces the entry in the input.
+```javascript
+decimalInput({
+    length: 2
+})
+```
+
 ### Input-level options
 All the input level options are applied using the `data` attribute.
-- **`display`**: this, just like the global option, sets the formatting type for the specific input it's used on. Can be `standard` or `height`.
+- **`format`**: this, just like the global option, sets the formatting type for the specific input it's used on. Can be `standard` or `height`.
 ```html
-<input class="decimal" type="number" data-display="standard"/>
+<input class="decimal" type="number" data-format="standard"/>
 ```
 
 - **`length`**: this sets the number of decimal places to be displayed for the specific input, but **only affects the standard format**.
 ```html
 <input class="decimal" type="number" data-length="2"/>
 ```
-
-
-
