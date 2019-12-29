@@ -51,8 +51,8 @@ decimalInput({
 ```
 
 - **`validation`**: this sets the type of validation to be used on height inputs. Can be `soft` or `hard`. Default value is `soft`.
--- Soft validation marks the input as invalid and you can hook onto this with css to show it as such.
--- Hard validation calculates the actual value in feet and inches and replaces the entry in the input.
+	- Soft validation marks the input as invalid and you can hook onto this with css to show it as such.
+	- Hard validation calculates the actual value in feet and inches and replaces the entry in the input.
 ```javascript
 decimalInput({
     length: 2
