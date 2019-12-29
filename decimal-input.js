@@ -3,10 +3,11 @@ function decimalInput(options = false){
   if (!options) options = {};
   // provide for any missing values
   options.selector = options.selector || ".decimal";
-  options.display = options.display || "standard";
-  // check if length was provided, and if it is a number (1-3)
+  options.format = options.format || "standard";
+  options.validation = options.validation || "soft";
+  // check if length was provided, and if it is a number
   if (options.length) {
-    if (isNaN(options.length) || (options.length < 1 || options.length > 3)){
+    if (isNaN(options.length) || (options.length < 1)){
       console.warn("decimal-input: Invalid length given: '" + options.length + "'")
       options.length = 2;
     }
@@ -20,7 +21,7 @@ function decimalInput(options = false){
     // formats the input
     // checks if input-level length is set, and is valid
     if (input.dataset.length){
-      if (isNaN(input.dataset.length) || (input.dataset.length < 1 && input.dataset.length > 3)){
+      if (isNaN(input.dataset.length) || (input.dataset.length < 1)){
         console.warn("decimal-input: Invalid length given: '" + input.dataset.length + "'")
         input.dataset.length = 2;
       }
@@ -28,11 +29,13 @@ function decimalInput(options = false){
     var length = input.dataset.length ? parseInt(input.dataset.length) : options.length;
     var mid = ".";
     var end = "";
-    var isHeight = input.dataset.display == "height" || (!input.dataset.display && options.display == "height");
+    var isHeight = input.dataset.format == "height" || (!input.dataset.format && options.format == "height");
     if (isHeight){
+      // set data-type to text to allow quote marks
+      input.setAttribute("type", "text");
       mid = "'";
       end = '"';
-      // set length to 2 if input display is height
+      // set length to 2 if input format is height
       length = 2;
     }
 
@@ -64,19 +67,28 @@ function decimalInput(options = false){
 
       var before = value.substring(0, value.length - length);
       var after = value.substring(value.length - length);
+
       // validation for height, autocorrect to correct feet and inches value
       if (isHeight){
         if (before > 0) {
-          while (after > 11){
-            before = parseInt(before) + 1;
-            after = parseInt(after) - 12;
-            if (after == 0){
-              after = after.toString() + "0";
-            } else if (after < 10) {
-              after = "0" + after.toString();
+          // if validation is hard
+          if (options.validation == "hard"){
+            while (after > 11){
+              before = parseInt(before) + 1;
+              after = parseInt(after) - 12;
+              if (after == 0){
+                after = after.toString() + "0";
+              } else if (after < 10) {
+                after = "0" + after.toString();
+              }
+              input.dataset.content = before.toString() + after.toString();
+              formatInput(true);
             }
-            input.dataset.content = before.toString() + after.toString();
-            formatInput(true);
+          } else {
+            if (after > 11) {
+              // mark input as invalid
+              input.setAttribute("invalid", true);
+            }
           }
         }
       }
@@ -86,6 +98,8 @@ function decimalInput(options = false){
 
     // bind input function to format
     input.onkeydown = function(e){
+      // remove invalid marker if present
+      input.removeAttribute("invalid");
       var key = e.key;
       if (key == "Backspace"){
         var content = input.dataset.content;
