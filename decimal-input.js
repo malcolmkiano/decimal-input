@@ -103,6 +103,7 @@ function decimalInput(options = false){
       // remove invalid marker if present
       input.removeAttribute("invalid");
       var key = e.key;
+      alert(key);
       if (key.toLower() == "backspace"){
         var content = input.dataset.content;
         if (content){
