@@ -18,7 +18,9 @@ function decimalInput(options = false){
   // run
   var inputs = document.querySelectorAll(options.selector);
   inputs.forEach(function(input){
-    // formats the input
+    // sets the pattern for the input to allow
+    input.setAttribute("pattern", "\\d*");
+
     // checks if input-level length is set, and is valid
     if (input.dataset.length){
       if (isNaN(input.dataset.length) || (input.dataset.length < 1)){
