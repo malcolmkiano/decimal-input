@@ -103,8 +103,7 @@ function decimalInput(options = false){
       // remove invalid marker if present
       input.removeAttribute("invalid");
       var key = e.key;
-      alert(key);
-      if (key.toLower() == "backspace"){
+      if (e.key == "Backspace"){
         var content = input.dataset.content;
         if (content){
           input.dataset.content = content.substring(0, content.length - 1);
@@ -114,8 +113,9 @@ function decimalInput(options = false){
       } else {
         input.dataset.content += key;
       }
-      e.preventDefault();
       formatInput();
+
+      return false;
     }
 
     // initial format
