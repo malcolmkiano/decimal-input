@@ -1,10 +1,12 @@
 function decimalInput(options = false){
   // set the options if not set
   if (!options) options = {};
+
   // provide for any missing values
   options.selector = options.selector || ".decimal";
   options.format = options.format || "standard";
   options.validation = options.validation || "soft";
+
   // check if length was provided, and if it is a number
   if (options.length) {
     if (isNaN(options.length) || (options.length < 1)){
@@ -18,6 +20,7 @@ function decimalInput(options = false){
   // run
   var inputs = document.querySelectorAll(options.selector);
   inputs.forEach(function(input){
+
     // sets the pattern for the input to allow
     input.setAttribute("pattern", "\\d*");
 
@@ -37,6 +40,7 @@ function decimalInput(options = false){
       input.setAttribute("type", "text");
       mid = "'";
       end = '"';
+
       // set length to 2 if input format is height
       length = 2;
     }
@@ -96,23 +100,42 @@ function decimalInput(options = false){
       }
       // delimit value
       input.value = before + mid + after + end;
+      if (!content) input.dataset.dl = input.value.length;
     }
 
-    // bind input function to format
-    input.onkeydown = function(e){
+    input.onkeydown = function(){
+      // set the current value
+      let v = input.value.substring(input.dataset.dl);
+      input.dataset.oldValue = v;
+    }
+
+    input.onkeyup = function(e){
       // remove invalid marker if present
       input.removeAttribute("invalid");
-      var key = e.key;
-      if (e.key == "Backspace"){
+
+      // set the current value
+      let v = input.value.substring(input.dataset.dl);
+      input.dataset.newValue = v;
+
+      // compare values
+      let val = compareValues(input.dataset.oldValue, input.dataset.newValue)
+      input.dataset.oldValue = "";
+      input.dataset.newValue = "";
+
+      // it was something other than a number,
+      // override to backspace
+      if (val === true) {
         var content = input.dataset.content;
         if (content){
           input.dataset.content = content.substring(0, content.length - 1);
         }
-      } else if (isNaN(key)) {
-        return false;
+
+      // it was a number, do the thing
       } else {
-        input.dataset.content += key;
+        input.dataset.content += val;
+
       }
+
       formatInput();
 
       return false;
@@ -121,4 +144,18 @@ function decimalInput(options = false){
     // initial format
     formatInput(false);
   });
+
+  function compareValues(oldV, newV){
+    let a = oldV.toString();
+    let b = newV.toString();
+    let ret = "";
+    if (a.length < b.length){
+      let r = b.substring(a.length - 1)
+      if (parseInt(r) || parseInt(r) === 0) ret = r
+    } else {
+      ret = true;
+    }
+    
+    return ret;
+  }
 }
