@@ -35,6 +35,7 @@ function decimalInput(options = false){
     if (isHeight){
       // set data-type to text to allow quote marks
       input.setAttribute("type", "text");
+      input.setAttribute("inputmode", "numeric");
       mid = "'";
       end = '"';
       // set length to 2 if input format is height
