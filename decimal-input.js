@@ -100,7 +100,7 @@ function decimalInput(options = false){
     }
 
     // bind input function to format
-    input.onkeydown = function(){
+    input.onkeydown = function(e){
       // remove invalid marker if present
       input.removeAttribute("invalid");
       var key = e.key;
