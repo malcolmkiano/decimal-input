@@ -1,77 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Decimal Input - Demo</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Decimal Input - Demo</title>
 
-  <!-- page style links -->
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+    <!-- page style links -->
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css"
+    />
 
-  <!-- demo style -->
-  <link rel="stylesheet" href="style.css">
+    <!-- demo style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-<body>
-
-  <div class="container">
-
-    <div class="row top">
-      <div class="column">
-        <h1>Decimal Input</h1>
-        <p>A simple plugin to let your inputs force decimal values. <a target="_blank" href="https://github.com/malcolmkiano/decimal-input">View on GitHub</a>.</p>
-        <img src="https://img.shields.io/badge/decimal--input.js-v1.0.0-brightgreen" alt="decimal-input.js version">
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-      <div class="column">
-        <h3>Standard decimal</h3>
-        <p>Enter product weight:</p>
-        <div>
-          <!-- this input is all you need, to start -->
-          <input class="decimal" type="number">
+  <body>
+    <div class="container">
+      <div class="row top">
+        <div class="column">
+          <h1>Decimal Input</h1>
+          <p>
+            A simple plugin to let your inputs force decimal values.
+            <a
+              target="_blank"
+              href="https://github.com/malcolmkiano/decimal-input"
+              >View on GitHub</a
+            >.
+          </p>
+          <img
+            src="https://img.shields.io/badge/decimal--input.js-v1.0.0-brightgreen"
+            alt="decimal-input.js version"
+          />
         </div>
       </div>
 
-      <div class="column">
-        <h3>Height (imperial)</h3>
-        <p>Enter your height:</p>
-        <div>
-          <input class="decimal" data-format="height" type="number">
+      <hr />
+
+      <div class="row">
+        <div class="column">
+          <h3>Standard decimal</h3>
+          <p>Enter product weight:</p>
+          <div>
+            <!-- this input is all you need, to start -->
+            <input class="decimal" type="number" />
+          </div>
+        </div>
+
+        <div class="column">
+          <h3>Height (imperial)</h3>
+          <p>Enter your height:</p>
+          <div>
+            <input class="decimal" data-format="height" type="number" />
+          </div>
         </div>
       </div>
 
-    </div>
+      <div class="row">
+        <div class="column">
+          <h3>With default value</h3>
+          <p>Enter product weight:</p>
+          <div>
+            <input class="decimal" data-default-value="25.15" type="number" />
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="column">
-        <h3>1 decimal point</h3>
-        <p>Enter product weight:</p>
-        <div>
-          <input class="decimal" data-length="1" type="number">
+        <div class="column">
+          <h3>With pre-filled value</h3>
+          <p>Enter your weight:</p>
+          <div>
+            <input
+              class="decimal"
+              data-format="height"
+              value="5.11"
+              type="number"
+            />
+          </div>
         </div>
       </div>
 
-      <div class="column"></div>
+      <div class="row">
+        <div class="column">
+          <h3>1 decimal point</h3>
+          <p>Enter product weight:</p>
+          <div>
+            <input class="decimal" data-length="1" type="number" />
+          </div>
+        </div>
 
+        <div class="column"></div>
+      </div>
     </div>
 
-  </div>
-
-  <!-- and this script -->
-  <script src="../decimal-input.js" charset="utf-8"></script>
-  <script type="text/javascript">
-    decimalInput({
-      validation: "soft"
-    });
-  </script>
-
-</body>
+    <!-- and this script -->
+    <script src="../decimal-input.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      decimalInput({
+        validation: "soft",
+      });
+    </script>
+  </body>
 </html>
